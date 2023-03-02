@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
                                 + "\n Humidity: " + humidity + "%"
                                 + "\n Description: " + description
                                 + "\n Wind Speed: " + wind + "mph"
-                                + "\n Cloudiness: " + clouds + "%"
-                                + "\n Pressure: " + pressure + " hPa";
+                                + "\n Cloud Cover: " + clouds + "%"
+                                + "\n Barometric Pressure: " + df.format(pressure * 0.02953) + " inches";
                         tvResults.setText(output);
                     } catch (JSONException e) {
                         e.printStackTrace();

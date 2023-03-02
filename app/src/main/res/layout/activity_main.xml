@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/sail"
+    android:background="@drawable/weatherscreen"
     android:orientation="vertical"
     android:padding="16dp">
     <TextView
@@ -18,47 +18,56 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="398dp"
         android:gravity="center"
         android:orientation="vertical">
-        <EditText
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="225dp">
+
+            <TextView
+                android:id="@+id/tvResults"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+        </ScrollView>
+
+        <EditText
             android:id="@+id/etCity"
+            android:layout_width="337dp"
+            android:layout_height="48dp"
             android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="Enter City Name"
-            android:inputType="textPersonName"/>
+            android:inputType="textPersonName"
+            android:textColor="@color/white"
+            android:textColorHint="#808080" />
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/etCountry"
+            android:layout_width="342dp"
+            android:layout_height="48dp"
             android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="Enter Country Code (Optional)"
-            android:inputType="textPersonName"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnGet"
-            android:layout_marginBottom="10dp"
-            android:background="#0070c7"
-            android:textColor="@android:color/white"
-            android:onClick="getWeatherDetails"
-            android:text="Get"
-            app:backgroundTint="@null" />
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="150dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvResults"/>
-            </ScrollView>
-
-
+            android:inputType="textPersonName"
+            android:textColor="@color/white"
+            android:textColorHint="#808080" />
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnGet"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="#0070c7"
+        android:onClick="getWeatherDetails"
+        android:text="Get"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@null" />
 </LinearLayout>
