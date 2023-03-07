@@ -66,10 +66,10 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject jsonObjectCurrent = jsonResponse.getJSONObject("current");
                         JSONObject jsonObjectLocation = jsonResponse.getJSONObject("location");
                         double temp_f = jsonObjectCurrent.getDouble("temp_f");
-//                        double feelsLike_f = jsonResponse.getDouble("feels_like_f");
+                        double feelslike_f = jsonObjectCurrent.getDouble("feelslike_f");
 //                        float pressure = jsonObjectMain.getInt("pressure");
 //                        int humidity = jsonObjectMain.getInt("humidity");
-//                        JSONObject jsonObjectWind = jsonResponse.getJSONObject("wind");
+                        String Current_conditions = jsonObjectCurrent.getString("text");
 //                        String wind = jsonObjectWind.getString("speed");
 //                        JSONObject jsonObjectClouds = jsonResponse.getJSONObject("clouds");
 //                        String clouds = jsonObjectClouds.getString("all");
@@ -78,9 +78,9 @@ public class MainActivity extends AppCompatActivity {
                         String cityName = jsonObjectLocation.getString("name");
 //                        tvResults.setTextColor(Color.rgb(255,255,255));
                         output += "Current weather of " + cityName
-//                                + "\n" + main
-                                + "\n Temp: " + df.format(temp_f) + " °F";
-//                                + "\n Feels Like: " + df.format(feelsLike_f) + " °F";
+                                + "\n" + Current_conditions
+                                + "\n Temp: " + df.format(temp_f) + " °F"
+                                + "\n Feels Like: " + df.format(feelslike_f) + " °F";
 //                                + "\n Humidity: " + humidity + "%"
 //                                + "\n Description: " + description
 //                                + "\n Rainfall: " + rain + "inches"
