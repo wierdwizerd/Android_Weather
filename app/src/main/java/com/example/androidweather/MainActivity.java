@@ -16,13 +16,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
     EditText etCity, etCountry;
     TextView tvResults;
     private final String url = "http://api.weatherapi.com/v1/";
-    private final String appid = "c36a626a29dd43cfb98145353230603";
+    private final String appid = "be082770d45d4fc781332903230703";
     DecimalFormat df = new DecimalFormat("#.##");
 
     @Override
@@ -45,24 +48,25 @@ public class MainActivity extends AppCompatActivity {
             tvResults.setText("City field can not be empty");
         } else {
             if (!country.equals("")) {
-                tempUrl = url + "weather" + "q=" + city + "," + country + "&units=" + unit + "&appid=" + appid;
+                tempUrl = url + "current.json" + "?q=" + city + "," + country + "&units=" + unit + "&key=" + appid;
             } else {
                 tempUrl = url + "current.json"  + "?key=" + appid + "&q=" + city;
             }
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, tempUrl, new Response.Listener<String>(){
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, tempUrl, new Response.Listener<String>(){
                 @Override
                 public void onResponse(String response) {
                    Log.d("response", response);
                     String output = "";
-//                    try {
-//                        JSONObject jsonResponse = new JSONObject(response);
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
 //                        JSONArray jsonArray = jsonResponse.getJSONArray("weather");
 //                        JSONObject jsonObjectWeather = jsonArray.getJSONObject(0);
 //                        String main = jsonObjectWeather.getString("main");
 //                        String description = jsonObjectWeather.getString("description");
-//                        JSONObject jsonObjectMain = jsonResponse.getJSONObject("main");
-//                        double temp = jsonObjectMain.getDouble("temp");
-//                        double feelsLike = jsonObjectMain.getDouble("feels_like");
+                        JSONObject jsonObjectCurrent = jsonResponse.getJSONObject("current");
+                        JSONObject jsonObjectLocation = jsonResponse.getJSONObject("location");
+                        double temp_f = jsonObjectCurrent.getDouble("temp_f");
+//                        double feelsLike_f = jsonResponse.getDouble("feels_like_f");
 //                        float pressure = jsonObjectMain.getInt("pressure");
 //                        int humidity = jsonObjectMain.getInt("humidity");
 //                        JSONObject jsonObjectWind = jsonResponse.getJSONObject("wind");
@@ -70,23 +74,23 @@ public class MainActivity extends AppCompatActivity {
 //                        JSONObject jsonObjectClouds = jsonResponse.getJSONObject("clouds");
 //                        String clouds = jsonObjectClouds.getString("all");
 //                        JSONObject jsonObjectSys = jsonResponse.getJSONObject("sys");
-//                        String countryName = jsonObjectSys.getString("country");
-//                        String cityName = jsonResponse.getString("name");
+//                       String countryName = jsonObjectSys.getString("country");
+                        String cityName = jsonObjectLocation.getString("name");
 //                        tvResults.setTextColor(Color.rgb(255,255,255));
-//                        output += "Current weather of " + cityName + " (" + countryName + ")"
+                        output += "Current weather of " + cityName
 //                                + "\n" + main
-//                                + "\n Temp: " + df.format(temp) + " °F"
-//                                + "\n Feels Like: " + df.format(feelsLike) + " °F"
+                                + "\n Temp: " + df.format(temp_f) + " °F";
+//                                + "\n Feels Like: " + df.format(feelsLike_f) + " °F";
 //                                + "\n Humidity: " + humidity + "%"
 //                                + "\n Description: " + description
 //                                + "\n Rainfall: " + rain + "inches"
 //                                + "\n Wind Speed: " + wind + "mph"
 //                                + "\n Cloud Cover: " + clouds + "%"
 //                                + "\n Barometric Pressure: " + df.format(pressure * 0.02953) + " inches";
-//                        tvResults.setText(output);
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
+                        tvResults.setText(output);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 }, new Response.ErrorListener() {
