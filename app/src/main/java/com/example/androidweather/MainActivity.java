@@ -1,5 +1,6 @@
 package com.example.androidweather;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -58,35 +60,32 @@ public class MainActivity extends AppCompatActivity {
                    Log.d("response", response);
                     String output = "";
                     try {
-                        JSONObject jsonResponse = new JSONObject(response);
-//                        JSONArray jsonArray = jsonResponse.getJSONArray("weather");
-//                        JSONObject jsonObjectWeather = jsonArray.getJSONObject(0);
-//                        String main = jsonObjectWeather.getString("main");
-//                        String description = jsonObjectWeather.getString("description");
+                       JSONObject jsonResponse = new JSONObject(response);
                         JSONObject jsonObjectCurrent = jsonResponse.getJSONObject("current");
+                        JSONObject jsonObjectCondition = jsonObjectCurrent.getJSONObject("condition");
+                        String textObj = jsonObjectCondition.getString("text");
                         JSONObject jsonObjectLocation = jsonResponse.getJSONObject("location");
                         double temp_f = jsonObjectCurrent.getDouble("temp_f");
                         double feelslike_f = jsonObjectCurrent.getDouble("feelslike_f");
-//                        float pressure = jsonObjectMain.getInt("pressure");
-//                        int humidity = jsonObjectMain.getInt("humidity");
-                        String Current_conditions = jsonObjectCurrent.getString("text");
-//                        String wind = jsonObjectWind.getString("speed");
-//                        JSONObject jsonObjectClouds = jsonResponse.getJSONObject("clouds");
-//                        String clouds = jsonObjectClouds.getString("all");
-//                        JSONObject jsonObjectSys = jsonResponse.getJSONObject("sys");
+                        float pressure_in = jsonObjectCurrent.getInt("pressure_in");
+                        int humidity = jsonObjectCurrent.getInt("humidity");
+                        double wind_mph = jsonObjectCurrent.getDouble("wind_mph");
+                        double gust_mph = jsonObjectCurrent.getDouble("gust_mph");
+                        int clouds = jsonObjectCurrent.getInt("cloud");
+//                        float  precip_in = jsonObjectCurrent.getInt(" precip_in");
 //                       String countryName = jsonObjectSys.getString("country");
                         String cityName = jsonObjectLocation.getString("name");
-//                        tvResults.setTextColor(Color.rgb(255,255,255));
+                        tvResults.setTextColor(Color.rgb(255,255,255));
                         output += "Current weather of " + cityName
-                                + "\n" + Current_conditions
+                                + "\n" + textObj
                                 + "\n Temp: " + df.format(temp_f) + " °F"
-                                + "\n Feels Like: " + df.format(feelslike_f) + " °F";
-//                                + "\n Humidity: " + humidity + "%"
-//                                + "\n Description: " + description
-//                                + "\n Rainfall: " + rain + "inches"
-//                                + "\n Wind Speed: " + wind + "mph"
-//                                + "\n Cloud Cover: " + clouds + "%"
-//                                + "\n Barometric Pressure: " + df.format(pressure * 0.02953) + " inches";
+                                + "\n Feels Like: " + df.format(feelslike_f) + " °F"
+                                + "\n Wind Speed: " + wind_mph + "mph"
+                                + "\n Wind Gust: " + gust_mph + "mph"
+                                + "\n Cloud Cover: " + clouds + "%"
+//                                + "\n Rainfall: " + df.format(precip_in) + "inches"
+                                + "\n Humidity: " + humidity + "%"
+                                + "\n Barometric Pressure: " + df.format(pressure_in);
                         tvResults.setText(output);
                     } catch (JSONException e) {
                         e.printStackTrace();
