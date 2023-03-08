@@ -12,9 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -88,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }, error -> Toast.makeText(getApplicationContext(),
                         error.toString().trim(), Toast.LENGTH_SHORT).show());
-            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-            requestQueue.add(stringRequest);
+
+            MySingleton.getInstance(MainActivity.this).addToRequestQueue(stringRequest);
         }
    }
 }
