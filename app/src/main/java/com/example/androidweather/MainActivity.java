@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                             + "\n Cloud Cover: " + clouds + "%"
                             + "\n Rainfall: " + precip_in + " in."
                             + "\n Humidity: " + humidity + "%"
-                            + "\n Barometric Pressure: " + pressure_in;
+                            + "\n Barometric Pressure: " + pressure_in + " in.";
                     tvResults.setText(output);
                 } catch (JSONException e) {
                     e.printStackTrace();
