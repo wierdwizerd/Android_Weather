@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Android Weather</string>
+    <string name="realtime_weather">Realtime weather</string>
+    <string name="android_weather">Android Weather</string>
+    <string name="enter_country_code_optional">Enter Country Code (Optional)</string>
+    <string name="enter_city_name">Enter City Name</string>
 </resources>
