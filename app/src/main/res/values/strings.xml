@@ -4,4 +4,6 @@
     <string name="android_weather">Android Weather</string>
     <string name="enter_country_code_optional">Enter Country Code (Optional)</string>
     <string name="enter_city_name">Enter City Name</string>
+    <string name="_24_hour_forecast">24 hour forecast</string>
+    <string name="_5_day_forecast">5 day forecast</string>
 </resources>

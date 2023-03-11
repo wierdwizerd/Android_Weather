@@ -19,13 +19,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="453dp"
+        android:layout_height="464dp"
         android:gravity="center"
         android:orientation="vertical">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="247dp">
+            android:layout_height="380dp">
 
             <TextView
                 android:id="@+id/tvResults"
@@ -40,37 +40,53 @@
             android:layout_width="337dp"
             android:layout_height="48dp"
             android:layout_marginBottom="10dp"
+            android:autofillHints=""
             android:ems="10"
             android:hint="@string/enter_city_name"
             android:inputType="textPersonName"
             android:textColor="@color/white"
-            android:textColorHint="#808080"
-            android:autofillHints="" />
-
-        <EditText
-            android:id="@+id/etCountry"
-            android:layout_width="342dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="10dp"
-            android:ems="10"
-            android:hint="@string/enter_country_code_optional"
-            android:inputType="textPersonName"
-            android:textColor="@color/white"
-            android:textColorHint="#808080"
-            android:autofillHints="" />
+            android:textColorHint="#a0a040"
+            android:textSize="25sp" />
 
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnGet"
+        android:id="@+id/btnGetnow"
         android:layout_width="145dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"
         android:layout_marginBottom="10dp"
         android:background="#0070c7"
         android:onClick="getWeatherDetails"
+        android:textSize="20sp"
         android:text="@string/realtime_weather"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@null" />
+
+    <Button
+        android:id="@+id/btnGet24"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="#0070c7"
+        android:onClick="getWeatherDetails"
+        android:textSize="20sp"
+        android:text="@string/_24_hour_forecast"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@null" />
+
+    <Button
+        android:id="@+id/btnGet5x24"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="#0070c7"
+        android:onClick="getWeatherDetails"
+        android:textSize="20sp"
+        android:text="@string/_5_day_forecast"
         android:textColor="@android:color/white"
         app:backgroundTint="@null" />
 </LinearLayout>
