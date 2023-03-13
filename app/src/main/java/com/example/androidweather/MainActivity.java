@@ -1,10 +1,12 @@
 package com.example.androidweather;
 
-import android.annotation.SuppressLint;
+
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,17 +22,23 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
     EditText etCity;
     TextView tvResults;
+    Button weatherNow, weather24, weather1Day, weather5Day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        weatherNow = findViewById(R.id.btnGetnow);
+        weather24 = findViewById(R.id.btnGet24);
+        weather1Day = findViewById(R.id.btnGet1x24);
+        weather5Day = findViewById(R.id.btnGet5x24);
         etCity = findViewById(R.id.etCity);
         tvResults = findViewById(R.id.tvResults);
 
     }
 
-    @SuppressLint("SetTextI18n")
+
     public void getWeatherDetails(View view) {
         String tempUrl = "";
         String city = etCity.getText().toString().trim();

@@ -19,13 +19,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="464dp"
+        android:layout_height="411dp"
         android:gravity="center"
         android:orientation="vertical">
 
         <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="380dp">
+            android:layout_width="365dp"
+            android:layout_height="271dp">
 
             <TextView
                 android:id="@+id/tvResults"
@@ -72,9 +72,22 @@
         android:layout_marginBottom="10dp"
         android:background="#0070c7"
         android:onClick="getWeatherDetails"
-        android:textSize="20sp"
         android:text="@string/_24_hour_forecast"
         android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:backgroundTint="@null" />
+
+    <Button
+        android:id="@+id/btnGet1x24"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="#0070c7"
+        android:onClick="getWeatherDetails"
+        android:text="@string/_1_day_forecast"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
         app:backgroundTint="@null" />
 
     <Button
@@ -85,8 +98,9 @@
         android:layout_marginBottom="10dp"
         android:background="#0070c7"
         android:onClick="getWeatherDetails"
-        android:textSize="20sp"
         android:text="@string/_5_day_forecast"
         android:textColor="@android:color/white"
+        android:textSize="20sp"
         app:backgroundTint="@null" />
+
 </LinearLayout>
