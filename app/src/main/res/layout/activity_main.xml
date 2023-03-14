@@ -19,13 +19,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="464dp"
+        android:layout_height="457dp"
         android:gravity="center"
         android:orientation="vertical">
 
         <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="380dp">
+            android:layout_width="334dp"
+            android:layout_height="367dp">
 
             <TextView
                 android:id="@+id/tvResults"
